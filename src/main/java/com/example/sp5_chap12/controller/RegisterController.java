@@ -3,6 +3,7 @@ package com.example.sp5_chap12.controller;
 import com.example.sp5_chap12.spring.DuplicateMemberException;
 import com.example.sp5_chap12.spring.MemberRegisterService;
 import com.example.sp5_chap12.spring.RegisterRequest;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
