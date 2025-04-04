@@ -4,8 +4,10 @@ import com.example.sp5_chap12.controller.RegisterController;
 import com.example.sp5_chap12.spring.MemberRegisterService;
 import com.example.sp5_chap12.survey.SurveyController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 
 @Configuration
