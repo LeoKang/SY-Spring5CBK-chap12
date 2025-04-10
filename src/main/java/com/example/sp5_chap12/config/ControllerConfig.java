@@ -1,9 +1,6 @@
 package com.example.sp5_chap12.config;
 
-import com.example.sp5_chap12.controller.ChangePwdController;
-import com.example.sp5_chap12.controller.LoginController;
-import com.example.sp5_chap12.controller.MemberListController;
-import com.example.sp5_chap12.controller.RegisterController;
+import com.example.sp5_chap12.controller.*;
 import com.example.sp5_chap12.spring.AuthService;
 import com.example.sp5_chap12.spring.ChangePasswordService;
 import com.example.sp5_chap12.spring.MemberDao;
@@ -57,6 +54,13 @@ public class ControllerConfig {
     @Bean
     public MemberListController memberListController() {
         MemberListController controller = new MemberListController();
+        controller.setMemberDao(memberDao);
+        return controller;
+    }
+
+    @Bean
+    public MemberDetailController memberDetailController() {
+        MemberDetailController controller = new MemberDetailController();
         controller.setMemberDao(memberDao);
         return controller;
     }
