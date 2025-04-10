@@ -2,9 +2,11 @@ package com.example.sp5_chap12.config;
 
 import com.example.sp5_chap12.controller.ChangePwdController;
 import com.example.sp5_chap12.controller.LoginController;
+import com.example.sp5_chap12.controller.MemberListController;
 import com.example.sp5_chap12.controller.RegisterController;
 import com.example.sp5_chap12.spring.AuthService;
 import com.example.sp5_chap12.spring.ChangePasswordService;
+import com.example.sp5_chap12.spring.MemberDao;
 import com.example.sp5_chap12.spring.MemberRegisterService;
 import com.example.sp5_chap12.survey.SurveyController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ControllerConfig {
 
     @Autowired
     private ChangePasswordService changePasswordService;
+
+    @Autowired
+    private MemberDao memberDao;
 
     @Bean
     public RegisterController registerController() {
@@ -46,6 +51,13 @@ public class ControllerConfig {
     public ChangePwdController changePwdController() {
         ChangePwdController controller = new ChangePwdController();
         controller.setChangePasswordService(changePasswordService);
+        return controller;
+    }
+
+    @Bean
+    public MemberListController memberListController() {
+        MemberListController controller = new MemberListController();
+        controller.setMemberDao(memberDao);
         return controller;
     }
 }
