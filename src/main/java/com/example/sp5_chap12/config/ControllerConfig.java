@@ -1,6 +1,8 @@
 package com.example.sp5_chap12.config;
 
+import com.example.sp5_chap12.controller.LoginController;
 import com.example.sp5_chap12.controller.RegisterController;
+import com.example.sp5_chap12.spring.AuthService;
 import com.example.sp5_chap12.spring.MemberRegisterService;
 import com.example.sp5_chap12.survey.SurveyController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class ControllerConfig {
     @Autowired
     private MemberRegisterService memberRegSvc;
 
+    @Autowired
+    private AuthService authService;
+
     @Bean
     public RegisterController registerController() {
         RegisterController controller = new RegisterController();
@@ -23,5 +28,12 @@ public class ControllerConfig {
     @Bean
     public SurveyController surveyController() {
         return new SurveyController();
+    }
+
+    @Bean
+    public LoginController loginController() {
+        LoginController controller = new LoginController();
+        controller.setAuthService(authService);
+        return controller;
     }
 }

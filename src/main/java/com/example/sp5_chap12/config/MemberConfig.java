@@ -1,5 +1,6 @@
 package com.example.sp5_chap12.config;
 
+import com.example.sp5_chap12.spring.AuthService;
 import com.example.sp5_chap12.spring.ChangePasswordService;
 import com.example.sp5_chap12.spring.MemberDao;
 import com.example.sp5_chap12.spring.MemberRegisterService;
@@ -53,5 +54,12 @@ public class MemberConfig {
         ChangePasswordService pwdSvc = new ChangePasswordService();
         pwdSvc.setMemberDao(memberDao());
         return pwdSvc;
+    }
+
+    @Bean
+    public AuthService authService() {
+        AuthService authService = new AuthService();
+        authService.setMemberDao(memberDao());
+        return authService;
     }
 }
