@@ -3,8 +3,10 @@ package com.example.sp5_chap12.controller;
 import com.example.sp5_chap12.spring.Member;
 import com.example.sp5_chap12.spring.MemberDao;
 import com.example.sp5_chap12.spring.MemberNotFoundException;
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -25,5 +27,15 @@ public class MemberDetailController {
         }
         model.addAttribute("member", member);
         return "member/memberDetail";
+    }
+
+    @ExceptionHandler(TypeMismatchException.class)
+    public String handleTypeMismatchException() {
+        return "member/invalidId";
+    }
+
+    @ExceptionHandler(MemberNotFoundException.class)
+    public String handleNotFoundException() {
+        return "member/noMember";
     }
 }
