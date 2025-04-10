@@ -3,6 +3,7 @@ package com.example.sp5_chap12.controller;
 import com.example.sp5_chap12.spring.AuthInfo;
 import com.example.sp5_chap12.spring.AuthService;
 import com.example.sp5_chap12.spring.WrongIdPasswordException;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public String submit(LoginCommand loginCommand, Errors errors) {
+    public String submit(LoginCommand loginCommand, Errors errors, HttpSession session) {
         new LoginCommandValidator().validate(loginCommand, errors);
         if (errors.hasErrors()) {
             return "login/loginForm";
@@ -33,6 +34,7 @@ public class LoginController {
 
         try {
             AuthInfo authInfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
+            session.setAttribute("authInfo", authInfo);
 
             return "login/loginSuccess";
         } catch (WrongIdPasswordException e) {
