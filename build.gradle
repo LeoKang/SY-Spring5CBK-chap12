@@ -49,6 +49,12 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
 	implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.1.1'
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0-rc2'
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.0-rc2'
 }
 
 tasks.named('test') {
