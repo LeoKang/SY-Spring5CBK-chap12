@@ -1,10 +1,13 @@
 package com.example.sp5_chap12.spring;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 public class Member {
     private Long id;
     private String email;
+    @JsonIgnore
     private String password;
     private String name;
     private LocalDateTime registerDateTime;
